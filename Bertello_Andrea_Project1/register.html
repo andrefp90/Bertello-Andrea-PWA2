@@ -6,29 +6,41 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Register</title>
+
+    <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS concatenated and minified via ant build script-->
+    <link rel="stylesheet" href="css/style.css?v=1">
+    <!-- end CSS-->
+
 </head>
 <body>
+<header>
+<img src="images/logo.png">
+</header>
 <!-- h1 for header to sign up -->
 <h1>Sign up Today!!!</h1>
 <!-- Registration form for sign up  -->
 <form action="dashboard.html">
-    <label>Name: <input type="text"name="name" placeholder="Enter your first name" required="required" ></label>
-    <label>Last Name: <input type="text"name="last-name" placeholder="Enter your last name" required="required"> </label>
+    <label>Name: <input type="text"name="name" class="masterTooltip" title="Enter your first name" required="required" ></label>
+    <label>Last Name: <input type="text"name="last-name" class="masterTooltip" title="Enter your last name" required="required"> </label>
     </br> </br>
-    <label>E-mail: <input type="email" name="email" placeholder="Enter your email" required="required"></label>
-    <label>Confirm e-mail: <input type="email" placeholder="Confirm your email address" required="required"></label>
+    <label>E-mail: <input type="email" name="email"class="masterTooltip" title="Enter your email"  required="required"></label>
+    <label>Confirm e-mail: <input type="email" class="masterTooltip" title="Confirm your email address" required="required"></label>
     </br></br>
-    <label>Username: <input type="text" name="username" placeholder="Create a username" required="required" ></label>
+    <label>Username: <input type="text" name="username" class="masterTooltip" title="Create a username" required="required" ></label>
     </br></br>
-    <label>Password: <input type="password" name="password" placeholder="Create a password with 8 character"required="required"></label>
-    <label>Confirm password: <input type="password" placeholder="Confirm password" required="required"></label>
+    <label>Password: <input type="password" name="password" class="masterTooltip" title="Create a password with 8 character"required="required"></label>
+    <label>Confirm password: <input type="password" class="masterTooltip" title="Confirm password" required="required"></label>
     </br></br>
     <!--list with multiple choices to choose book categories  -->
     <p>Choose your favorite book categories:</br>
-    To select more than one category on a pc hold down the control key while selecting multiple options on a mac
-        hold the command key.
+
     </p>
-    <select name="books"  size="10" multiple="multiple">
+    <select name="books"  size="10" multiple="multiple" class="masterTooltip" title=" To select more than one category: On a pc hold down the control key while selecting multiple options, On a mac
+        hold the command key.">
+
         <option value="adventure" selected="selected">Adventure</option>
         <option value="fantasy" >Fantasy</option>
         <option value="fiction" >Fiction</option>
@@ -47,5 +59,11 @@
     <a href ="dashboard.html"> <input type="submit" value="Sign up"/></a>
 </form>
 
+<!-- jquery -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- plugins -->
+
+<!-- main -->
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
