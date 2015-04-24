@@ -109,12 +109,18 @@ body{
  }
 
  .userid {
-     width: 100px;
+     width: 400px;
+     display: inline;
+     text-transform:uppercase ;
+     text-decoration: underline;
      float: left;
+ ;
+
+
  }
 
- .logoutbox {
-     width: 400px;
+ #logOut, .dashbox {
+     width: 80px;
      float: right;
  }
 
@@ -152,7 +158,12 @@ body{
 .gallery .sorting a:hover { color: #bf5e47;  }
 .gallery .sorting a.selected { color: #bf5e47; background-image: url(../images/checkbox_active.gif);}
 
-.gallery .photos .thumbnail_container { position: relative;background-color: #777; }
-.gallery .photos .thumbnail_container a.thumbnail/* { position: absolute; }*/
+/*.gallery .photos .thumbnail_container { position: relative;background-color: #777; }
+.gallery .photos .thumbnail_container a.thumbnail { position: absolute; }*/
 
 .gallery .photos .thumbnail_container a.thumbnail img { width: 75px; height: 121px; border: 2px solid #6d4d2e;}
+
+.gallery {
+    display: inline;
+    width: 700px;
+}

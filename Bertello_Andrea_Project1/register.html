@@ -23,16 +23,16 @@
 <h1>Sign up Today!!!</h1>
 <!-- Registration form for sign up  -->
 <form action="dashboard.html">
-    <label>Name: <input type="text"name="name" class="masterTooltip" title="Enter your first name" required="required" ></label>
-    <label>Last Name: <input type="text"name="last-name" class="masterTooltip" title="Enter your last name" required="required"> </label>
+    <label>First Name: <input type="text" id="first" name="name" class="masterTooltip" title="Enter your first name" required="required" ></label>
+    <label>Last Name: <input type="text" id="last" name="last-name" class="masterTooltip" title="Enter your last name" required="required"> </label>
     </br> </br>
-    <label>E-mail: <input type="email" name="email"class="masterTooltip" title="Enter your email"  required="required"></label>
-    <label>Confirm e-mail: <input type="email" class="masterTooltip" title="Confirm your email address" required="required"></label>
+    <label>E-mail: <input type="email" id="email" name="email"class="masterTooltip" title="Enter your email"  required="required"></label>
+    <label>Confirm e-mail: <input type="email" id="email-confirm" class="masterTooltip" title="Confirm your email address" required="required"></label>
     </br></br>
-    <label>Username: <input type="text" name="username" class="masterTooltip" title="Create a username" required="required" ></label>
+    <label>Username: <input type="text" id="username" name="username" class="masterTooltip" title="Create a username" required="required" ></label>
     </br></br>
-    <label>Password: <input type="password" name="password" class="masterTooltip" title="Create a password with 8 character"required="required"></label>
-    <label>Confirm password: <input type="password" class="masterTooltip" title="Confirm password" required="required"></label>
+    <label>Password: <input type="password" id="password" name="password" class="masterTooltip" title="Create a password with 8 character"required="required"></label>
+    <label>Confirm password: <input type="password" id="pass-confirm" class="masterTooltip" title="Confirm password" required="required"></label>
     </br></br>
     <!--list with multiple choices to choose book categories  -->
     <p>Choose your favorite book categories:</br>
@@ -56,7 +56,7 @@
     </br> </br>
     <input type="checkbox" name="terms" value="terms"/> I agree to the <a href="">Terms and conditions</a> of My Book Log
     </br> </br>
-    <a href ="dashboard.html"> <input type="submit" value="Sign up"/></a>
+     <input type="button" value="Sign up" id="register"/>
 </form>
 
 <!-- jquery -->

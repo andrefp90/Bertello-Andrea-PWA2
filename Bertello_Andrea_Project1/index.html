@@ -38,13 +38,15 @@
     <h1>Welcome to My book log!!</h1>
 
 <!-- from for sign in -->
-        <form action="dashboard.html "method="post">
+<div id="login">
+        <form id="loginForm">
             <label><img src="images/user.gif">Username:</label>
-            <input type="text" name="username" id="user" class="masterTooltip" title="Please type in your username" required="required"/><br/>
+            <input type="text" name="signinButton" id="user" class="masterTooltip" title="Please type in your username" required="required"/><br/>
             <label><img src="images/lock.gif">Password:</label>
-            <input type="password" name="password" id="pass" class="masterTooltip" title="Please type in your password"required="required"/> <br/>
-            <a href ="dashboard.html"><input type="submit" value="Sign in" class="masterTooltip" title="Welcome back!"  /></a>
+            <input type="password" name="signinButton" id="pass" class="masterTooltip" title="Please type in your password"required="required"/> <br/>
+            <input type="button" name="signinButton" id="signinButton" value="Sign in" class="masterTooltip" title="Welcome back!"  />
         </form>
+</div>
 <!-- Information about the web application and becoming a memeber h2 p  -->
     <h2>Not a member? Join now!!</h2>
     <p>Have you read so many books that some time you just don't remember what they where all about?  </br>

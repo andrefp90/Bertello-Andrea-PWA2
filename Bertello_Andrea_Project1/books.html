@@ -15,10 +15,10 @@
 <!-- Welcome to the books page and buttons-->
 <header>
     <img src="images/logo.png">
-    <div class="logoutbox">
-    <button class="dashboard">Dashboard</button>
+    <div class="dashbox">
+        <a href ="dashboard.html"><button class="dashboard">Dashboard</button></a>
     <input name="logOut" type="button" id="logOut" value="Sign Out"/>
-</div>
+
     <br>
     <br>
 
@@ -36,11 +36,13 @@
         </p>
     </div>
 
-<div id="booklist">
+<div id="projectlist">
     <h1>Your Books</h1>
-    <div class="books">
-    </div>
-</div>
+
+    <div class="projects">
+
+    </div><!--Closes book-->
+</div><!--Closes booklist-->
 
 
 <!--modal-->
@@ -52,15 +54,15 @@
         <div id="add">
             <form id="addForm">
                 <label>Book name:</label>
-                <input name="bookName" type="text" id="bookName" class="masterTooltip" title="What is the name of the book you are reading?"/>
+                <input name="projName" type="text" id="projectName" class="masterTooltip" title="What is the name of the book you are reading?"/>
                 <br>
                 <br>
                 <label>Book Description:</label>
-                <input name="bookDescription"type="text" id="bookDescription" class="masterTooltip" title="Write a brief description about the book"/>
+                <input name="projDesc"type="text" id="projectDescription" class="masterTooltip" title="Write a brief description about the book"/>
                 <br>
                 <br>
                 <label>Date you started the book:</label>
-                <input name="bookDate"type="date" id="bookDate"  class="masterTooltip" title="When did you start reading your book?"/>
+                <input name="projDue"type="date" id="projectDueDate"  class="masterTooltip" title="When did you start reading your book?"/>
                 <br>
                 <br>
                 <label for="status">Select book status:</label>

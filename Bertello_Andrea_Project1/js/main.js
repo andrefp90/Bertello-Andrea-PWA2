@@ -3,48 +3,151 @@
 	Author: Andrea Bertello
 */
 
-(function($){
+(function($) {
 
-    /* tooltip */
-	
-	$('.masterTooltip').hover(function(){
+    /* --------------------- tooltip --------------------- */
+
+    $('.masterTooltip').hover(function () {
 
 //Hover over code
         var title = $(this).attr('title');
         $(this).data("tipText", title).removeAttr("title");
         $('<p class="tooltip"></p>')
-        .text(title)
-        .appendTo("body")
-        .fadeIn("slow");
+            .text(title)
+            .appendTo("body")
+            .fadeIn("slow");
 
-    }, function() {
+    }, function () {
         //Hover out code
         $(this).attr("title", $(this).data("tipText"));
         $(".tooltip").remove();
-    }).mousemove(function(e) {
+    }).mousemove(function (e) {
         var mousex = e.pageX + 20;
         var mousey = e.pageY + 10;
         $('.tooltip')
             .css({ top: mousey, left: mousex })
     });
 
-    /*Tabs for dashboard*/
+    /*---------------------Tabs for dashboard---------------------------*/
 
     $('#tabs p').hide().eq(0).show();
     $('#tabs p:not(:first)').hide();
 
-    $('#tab-nav li').click(function(e){
+    $('#tab-nav li').click(function (e) {
         e.preventDefault();
         $('#tabs p').hide();
 
-    $('#tab-nav .current').removeClass("current");
+        $('#tab-nav .current').removeClass("current");
         $(this).addClass('current');
         var clicked = $(this).find('a:first').attr('href');
 
-        $('#tabs '+ clicked).fadeIn('fast');
+        $('#tabs ' + clicked).fadeIn('fast');
     }).eq(0).addClass('current');
 
-/*Modal*/
+    /*--------------------- New books ---------------------*/
+
+    $('#addButton').on('click', function () {
+
+        var projName = $('#projectName').val(),
+            projDesc = $('#projectDescription').val(),
+            projDue = $('#projectDueDate').val(),
+            status = $('input[name = "status"]:checked').prop("id");
+
+        $.ajax({
+            url: "xhr/new_project.php",
+            type: "post",
+            dataType: "json",
+            data: {
+                projectName: projName,
+                projectDescription: projDesc,
+                projectDueDate: projDue,
+                status: status
+            },
+            success: function (response) {
+                console.log('Testing');
+                if (response.error) {
+                    alert(response.error);
+                } else {
+                    window.location.assign("books.html");
+                }
+                ;
+            }
+        });
+
+    });
+
+    /* ---------------------Get Books --------------------- */
+    var projects = function(){
+
+    $.ajax({
+        url: 'xhr/get_projects.php',
+        type: 'get',
+        dataType: 'json',
+        success: function(response) {
+            if (response.error) {
+                console.log(response.error);
+            } else {
+
+                for (var i = 0, j=response.projects.length; i < j; i++) {
+                    var result = response.projects[i];
+
+                    $(".projects").append(
+                            '<div style="border:1px solid black">' +
+                            " <input class= 'projectid' type='hidden' value='" + result.id
+                            + "'> " +
+                            "Project Name: " + result.projectName + "<br>" +
+                            "Project Description:" + result.projectDescription + "<br>"
+                            +
+                            "Project Status: " + result.status + "<br>"
+                            + '<button class="deletebtn">Delete</button>'
+                            + '<button class="editbtn">Edit</button>'
+                            + '</div> <br>'
+                    );
+                } ;
+
+
+                $('.deletebtn').on('click', function (e) {
+                    e.preventDefault;
+                    $(this).closest('.projects').find('.deletebtn');
+                    console.log('test delete');
+                    $.ajax({
+                        url: 'xhr/delete_project.php',
+                        data: {
+                            projectID: result.id
+                        },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (response) {
+                            console.log('Testing');
+
+                            if (response.error) {
+                                alert(response.error);
+                            } else {
+                                window.location.assign("books.html");
+
+                            };
+                        }
+
+                    });
+                });//end delete
+
+            }
+
+        }
+    });
+    }
+
+    projects();
+
+
+
+
+
+
+
+
+
+/* ---------------------Modal --------------------- */
 
     $('.modalClick').on('click', function(event){
         event.preventDefault();
@@ -71,7 +174,98 @@
         $(this).fadeTo(100, 1);
     });
 
-    /* photo gallery*/
+    /* --------------------- Login --------------------- */
+
+        $('#signinButton').click(function(){
+            var user = $('#user').val();
+            var pass = $('#pass').val();
+            console.log("This notifies you if the password is working");
+            $.ajax({
+                url:'xhr/login.php',
+                type:'post',
+                dataType: 'json',
+                data: {
+                    username: user,
+                    password: pass
+                },
+                success:function(response){
+                    console.log("test user");
+                    if(response.error){
+                        alert(response.error);
+                    }else{
+                        window.location.assign('dashboard.html')
+                    };
+                }
+            });
+        });
+
+
+/* --------------------- LogOut --------------------- */
+
+        $('#logOut').click(function(e){
+            e.preventDefault;
+            $.get('xhr/logout.php', function(){
+                window.location.assign('index.html')
+            })
+        });
+
+
+    /* ---------------------Register ---------------------*/
+
+    $('#register').on('click', function () {
+        var firstname= $('#first').val(),
+            lastname= $('#last').val(),
+            email= $('#email').val(),
+            username= $('#username').val(),
+            password= $('#password').val();
+        console.log(firstname+' '+lastname+' '+email+' '+username+' '+password);
+
+        $.ajax({
+            url:'xhr/register.php',
+            type: 'post',
+            dataType:'json',
+            data:{
+                first_name:firstname,
+                last_name:lastname,
+                email:email,
+                username:username,
+                password:password
+            },
+
+            success:function(response){
+                if(response.error){
+                    alert(response.error);
+
+                    }else{
+                        window.location.assign('dashboard.html');
+                    }
+                }
+        });
+
+    });
+
+/* ---------------------Projects page ---------------------*/
+    $('.booksbtn').on('click', function (e) {
+        e.preventDefault();
+        window.location.assign('books.html');
+
+    });
+
+/* ---------------------Display username---------------------*/
+    $.getJSON("xhr/check_login.php", function(data) {
+        console.log(data);
+        $.each(data, function(key, val){
+            console.log(val.first_name);
+        $(".userid").html("Welcome : " + val.first_name);
+    })
+    });
+
+
+
+
+
+
+    /*--------------------- photo gallery---------------------*/
 
     var thumbnailSpacing = 15;
 
@@ -90,8 +284,7 @@ $(document).ready(function(){
 
 
 
-    $('.gallery .sorting').css('margin-bottom',window.thumbnailSpacing+'px');
-    $('.thumbnail_container a.thumbnail').addClass('showMe').addClass('fancybox').attr('rel','group');
+
 
     positionThumbnails();
 
@@ -122,11 +315,11 @@ $(document).ready(function(){
 
     function positionThumbnails(){
 
-        /*debug*/ $('.debug-remainder').html('');
+
 
 $('.thumbnail_container a.thumbnail.hideMe').animate({opacity:0},500,function(){
 
-    $(this).css({'display':'none','top':'0px','left':'0px'});
+$(this).css({'display':'none','top':'0px','left':'0px'});
 });
 
         var containerWidth = $('.photos').width();
@@ -150,7 +343,7 @@ $('.thumbnail_container a.thumbnail.hideMe').animate({opacity:0},500,function(){
                 thumbnail_C += thumbnailWidth;
             }
 
-            $(this).css('display','block').animate({
+            $(this).css('display','inline').animate({
                 'opacity': 1,
                'top':thumbnail_R+'px',
                 'left':thumbnail_C+'px'
@@ -163,26 +356,11 @@ $('.thumbnail_container a.thumbnail.hideMe').animate({opacity:0},500,function(){
 
         });
 
-        detectFancyboxLinks();
 
-        var sortingWidth = $('.thumbnail_container').width() / thumbnailWidth;
-        var newWidth = sortingWidth * thumbnailWidth - window.thumbnailSpacing;
-        $('.sorting').css('width',newWidth+'px');
     }
 
 
-function detectFancyboxLinks(){
 
-    $('a.fancybox[rel="group"]').fancybox({
-        'transitionIn' :'elastic',
-        'transitionOut' :'elastic',
-        'titlePosition' :'over',
-        'speedIn': 500,
-        'overlayColor' : '#000',
-        'padding' : 0,
-        'overlayOpacity' : .75
-    });
-}
 		
 
 	
