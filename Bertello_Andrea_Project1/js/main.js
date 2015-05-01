@@ -28,6 +28,9 @@
             .css({ top: mousey, left: mousex })
     });
 
+
+
+
     /*---------------------Tabs for dashboard---------------------------*/
 
     $('#tabs p').hide().eq(0).show();
@@ -92,7 +95,7 @@
                     var result = response.projects[i];
 
                     $(".projects").append(
-                            '<div style="border:1px solid black">' +
+                            '<div id="sortable" class="ui-state-default">' +
                             " <input class= 'projectid' type='hidden' value='" + result.id
                             + "'> " +
                             "Project Name: " + result.projectName + "<br>" +
@@ -107,13 +110,23 @@
 
 
                 $('.deletebtn').on('click', function (e) {
-                    e.preventDefault;
-                    $(this).closest('.projects').find('.deletebtn');
+
+                   var pid = $(this).parent().find('.projectid').val();
+
+
+
+
+
+
+
                     console.log('test delete');
+
+
+
                     $.ajax({
                         url: 'xhr/delete_project.php',
                         data: {
-                            projectID: result.id
+                            projectID: pid
                         },
                         type: 'POST',
                         dataType: 'json',
@@ -124,8 +137,9 @@
                                 alert(response.error);
                             } else {
                                 window.location.assign("books.html");
-
                             };
+
+
                         }
 
                     });
@@ -135,9 +149,17 @@
 
         }
     });
+
+
     }
+    $( "#dialog" ).dialog();
 
     projects();
+
+    /* ---------------------Sortable --------------------- */
+
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
 
 
 
@@ -172,6 +194,24 @@
     });
     $('.mystatus').mouseout(function(){
         $(this).fadeTo(100, 1);
+    });
+
+    /* --------------------- datepicker --------------------- */
+    $( "#from" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+            $( "#to" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3,
+        onClose: function( selectedDate ) {
+            $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+        }
     });
 
     /* --------------------- Login --------------------- */
@@ -358,6 +398,13 @@ $(this).css({'display':'none','top':'0px','left':'0px'});
 
 
     }
+
+    /* Colorbox */
+   $('#photos').find('a').colorbox({
+       rel:'gal',
+       'maxWidth' : '90%',
+       'scalePhotos' :true
+   });
 
 
 

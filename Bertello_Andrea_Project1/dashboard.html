@@ -7,19 +7,21 @@
     <!--  Mobile viewport optimized: j.mp/bplateviewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--fancy box stylesheet-->
-    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css"/>
+
     <!-- CSS concatenated and minified via ant build script-->
     <link rel="stylesheet" href="css/style.css?v=1">
+    <link href ="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href ="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
     <!-- end CSS-->
 </head>
 <body>
+<div id="container">
 <header>
     <img src="images/logo.png">
 <!-- Sign out button to take you back to the home page -->
 
 
-<input name="logOut" type="button" id="logOut" value="Sign Out"/>
+<input name="logOut" type="button" id="logOut" value="Sign Out" class="button"/>
 
 
     <br>
@@ -47,7 +49,7 @@
            -Book name<br>
             -Book Description<br>
             -When you started the book<br>
-           -What's tour book progress<br>
+           -What's your book progress<br>
 
             <br> <br> Go to my books  <button class="booksbtn">Books</button>
         </p>
@@ -79,7 +81,7 @@
             <div class="clear_both"></div>
         </div>
     </div>
-    <div class="photos">
+    <div id="photos">
 
     <div class="thumbnail_container">
         <a class="thumbnail" title="A Game of Thrones (A Song of Ice and Fire, Book 1)" href="photos/g-th-1_l.png" data-keywords="fantasy"><img src="photos/g-th_1.png"/></a>
@@ -103,11 +105,12 @@
 <!-- jquery -->
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <!-- plugins -->
-
+<script src="js/plugins/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 <!-- main -->
 <script type="text/javascript" src="js/main.js"></script>
 
 
-
+</div>
 </body>
 </html>

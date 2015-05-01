@@ -8,6 +8,8 @@
 
     <!-- CSS concatenated and minified via ant build script-->
     <link rel="stylesheet" href="css/style.css?v=1">
+    <link href ="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href ="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
     <!-- end CSS-->
 </head>
 <body>
@@ -17,15 +19,17 @@
     <img src="images/logo.png">
     <div class="dashbox">
         <a href ="dashboard.html"><button class="dashboard">Dashboard</button></a>
-    <input name="logOut" type="button" id="logOut" value="Sign Out"/>
+    <input name="logOut" type="button" id="logOut" value="Sign Out" class="button"/>
 
     <br>
     <br>
+        <br>
 
-<div class="userid">Welcome</div>
+
 
 
 </header>
+<div class="userid">Welcome</div>
 
 
 <br>
@@ -39,7 +43,11 @@
 <div id="projectlist">
     <h1>Your Books</h1>
 
-    <div class="projects">
+
+
+
+
+    <div class="projects " id="sortable">
 
     </div><!--Closes book-->
 </div><!--Closes booklist-->
@@ -54,6 +62,8 @@
         <div id="add">
             <form id="addForm">
                 <label>Book name:</label>
+
+
                 <input name="projName" type="text" id="projectName" class="masterTooltip" title="What is the name of the book you are reading?"/>
                 <br>
                 <br>
@@ -61,8 +71,12 @@
                 <input name="projDesc"type="text" id="projectDescription" class="masterTooltip" title="Write a brief description about the book"/>
                 <br>
                 <br>
-                <label>Date you started the book:</label>
-                <input name="projDue"type="date" id="projectDueDate"  class="masterTooltip" title="When did you start reading your book?"/>
+
+
+                <label for="from">From</label>
+                <input type="text" id="from" name="from">
+                <label for="to">to</label>
+                <input type="text" id="to" name="to">
                 <br>
                 <br>
                 <label for="status">Select book status:</label>
@@ -83,13 +97,17 @@
                     <input type="radio" name="status" id="reReading"><img src="images/reRead.png" class="masterTooltip" title="Are you re-reading the book?">
                 </label>
                 <br>
-                <input name="addButton" type="button"  id="addButton" value="Add book"/>
+                <br>
+                <input name="addButton" type="button"  id="addButton" value="Add book" class="button"/>
 
             </form>
         </div>
     </div>
 </div>
 
+<div id="dialog" title="Book Deleted">
+    <p>Your book has been deleted successfully!</p>
+</div>
 
 
 
@@ -101,6 +119,7 @@
 <!-- jquery -->
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <!-- plugins -->
+<script type="text/javascript" src="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 
 <!-- main -->
 <script type="text/javascript" src="js/main.js"></script>

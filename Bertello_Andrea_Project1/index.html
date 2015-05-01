@@ -26,6 +26,8 @@
 	
 	<!-- CSS concatenated and minified via ant build script-->
 	<link rel="stylesheet" href="css/style.css?v=1">
+    <link href ="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href ="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
 	<!-- end CSS-->
 	
 
@@ -38,16 +40,19 @@
     <h1>Welcome to My book log!!</h1>
 
 <!-- from for sign in -->
+
 <div id="login">
         <form id="loginForm">
             <label><img src="images/user.gif">Username:</label>
             <input type="text" name="signinButton" id="user" class="masterTooltip" title="Please type in your username" required="required"/><br/>
             <label><img src="images/lock.gif">Password:</label>
-            <input type="password" name="signinButton" id="pass" class="masterTooltip" title="Please type in your password"required="required"/> <br/>
-            <input type="button" name="signinButton" id="signinButton" value="Sign in" class="masterTooltip" title="Welcome back!"  />
+            <input type="password" name="signinButton" id="pass" class="masterTooltip" title="Please type in your password"required="required"/> <br/> <br>
+            <input type="button" name="signinButton" id="signinButton" value="Sign in"  class="button"  />
         </form>
 </div>
+
 <!-- Information about the web application and becoming a memeber h2 p  -->
+<div class="column1">
     <h2>Not a member? Join now!!</h2>
     <p>Have you read so many books that some time you just don't remember what they where all about?  </br>
         Join today and create a profile for your favorite books. Remember your favorite characters, what you liked most
@@ -55,6 +60,7 @@
         like to share with our friends!! So you can recommend the books you loved, share your rating and your favorite
         quotes.
     </p>
+</div>
   <!--aside for benefits of becoming a member -->
 <aside>
     <!-- h3 for becoming a member -->
@@ -69,7 +75,7 @@
         <li>Save your favorite quotes</li>
         <li>Share and recommend with your friends </li>
      </ul>
-    <a href ="register.html"><input type="submit" value="Sign up" class="masterTooltip" title="Join Today!"/></a>
+    <a href ="register.html"><input type="submit" value="Sign up" class="button"/></a>
   </aside>
 
 
@@ -79,6 +85,8 @@
 <!-- jquery -->
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <!-- plugins -->
+<!--<script type="text/javascript" src="js/plugins/jquery-1.11.4.min.js"></script> -->
+<script type="text/javascript" src="js/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 
 <!-- main -->
 <script type="text/javascript" src="js/main.js"></script>
